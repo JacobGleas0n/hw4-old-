@@ -8,6 +8,19 @@
 
     <%= stylesheet_link_tag "application" %>
   </head>
+    <body>
+    <p>
+      <% if @current_user %>
+        <%= @current_user.first_name %>
+        <%= button_to "Logout", "/sessions/logout", method: :delete %>
+      <% else %>
+        <a href="/sessions/new">Login</a> | <a href="/users/new">Signup</a>
+      <% end %>
+    </p>
+
+     <p>
+      <%= flash[:notice] %>
+    </p>
 
   <body>
     <%= yield %>
